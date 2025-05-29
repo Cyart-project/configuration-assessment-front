@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardTitle, CardContent } from "../Components/ui/card";
 import { DataTable } from "../Components/ui/data-table";
-import { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
 
 const columns = [
@@ -48,7 +47,7 @@ const remediationData = [
   { issue: "Linux Kernel Privilege Escalation", fix: "Apply Linux kernel security patches", cveId: "CVE-2021-4034", time: "1 hour", note: "Requires reboot" },
 ];
 
-export default function ReportPage({ deviceInfo = {}, summaryData = {}, findings = [] }) {
+function ReportPage({ deviceInfo = {}, summaryData = {}, findings = [] }) {
   const [severityFilter, setSeverityFilter] = useState("All Severities");
 
   const filteredFindings = severityFilter === "All Severities"
@@ -146,3 +145,5 @@ export default function ReportPage({ deviceInfo = {}, summaryData = {}, findings
     </div>
   );
 }
+
+export default ReportPage;
