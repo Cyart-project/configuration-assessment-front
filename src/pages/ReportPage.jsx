@@ -1,5 +1,5 @@
-import { Card, CardHeader, CardTitle, CardContent } from "../components/ui/card";
-import { DataTable } from "../components/ui/data-table";
+import { Card, CardHeader, CardTitle, CardContent } from "../Components/ui/card";
+import { DataTable } from "../Components/ui/data-table";
 import { useState } from "react";
 
 const columns = [
