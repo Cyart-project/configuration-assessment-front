@@ -1,4 +1,3 @@
-
 import {
   Card,
   CardHeader,
@@ -13,7 +12,9 @@ const columns = [
     accessorKey: "timestamp",
     header: "Timestamp",
     cell: ({ row }) => (
-      <span className="text-sm text-gray-500">{new Date(row.original.timestamp).toLocaleString()}</span>
+      <span className="text-sm text-gray-500">
+        {new Date(row.original.timestamp).toLocaleString()}
+      </span>
     ),
   },
   {
@@ -53,27 +54,27 @@ const columns = [
         critical: {
           bg: "bg-purple-100",
           text: "text-purple-800",
-          icon: "fas fa-bolt"
+          icon: "fas fa-bolt",
         },
         high: {
           bg: "bg-red-100",
           text: "text-red-800",
-          icon: "fas fa-exclamation-circle"
+          icon: "fas fa-exclamation-circle",
         },
         medium: {
           bg: "bg-yellow-100",
           text: "text-yellow-800",
-          icon: "fas fa-exclamation"
+          icon: "fas fa-exclamation",
         },
         low: {
           bg: "bg-green-100",
           text: "text-green-800",
-          icon: "fas fa-info-circle"
-        }
+          icon: "fas fa-info-circle",
+        },
       };
-      
+
       const config = severityConfig[severity] || severityConfig.low;
-      
+
       return (
         <span
           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${config.bg} ${config.text}`}
@@ -106,14 +107,16 @@ const remediationData = [
     fix: "Update Apache Log4j to version 2.17.1 or later",
     cveId: "CVE-2021-44228",
     time: "30 minutes",
-    description: "This will address the critical remote code execution vulnerability.",
+    description:
+      "This will address the critical remote code execution vulnerability.",
   },
   {
     issue: "OpenSSL Buffer Overflow",
     fix: "Upgrade OpenSSL to version 3.0.7",
     cveId: "CVE-2022-3786",
     time: "45 minutes",
-    description: "This will fix the buffer overflow vulnerability and other security issues.",
+    description:
+      "This will fix the buffer overflow vulnerability and other security issues.",
   },
   {
     issue: "Linux Kernel Privilege Escalation",
@@ -121,15 +124,12 @@ const remediationData = [
     cveId: "CVE-2021-4034",
     time: "1 hour",
     note: "Requires reboot",
-    description: "Install the latest security updates to address privilege escalation vulnerabilities.",
+    description:
+      "Install the latest security updates to address privilege escalation vulnerabilities.",
   },
 ];
 
-function ReportPage({
-  deviceInfo = {},
-  summaryData = {},
-  findings = [],
-}) {
+function ReportPage({ deviceInfo = {}, summaryData = {}, findings = [] }) {
   const [severityFilter, setSeverityFilter] = useState("All Severities");
 
   const filteredFindings =
@@ -164,7 +164,9 @@ function ReportPage({
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <i className="fas fa-shield-alt text-indigo-600 text-xl mr-2"></i>
-              <span className="text-xl font-semibold text-gray-900">Security Dashboard</span>
+              <span className="text-xl font-semibold text-gray-900">
+                Security Dashboard
+              </span>
             </div>
             <div className="flex items-center">
               <button className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 transition-colors">
@@ -188,19 +190,39 @@ function ReportPage({
               <div className="mt-2 flex flex-wrap gap-y-2">
                 <div className="flex items-center text-sm text-gray-500 mr-4">
                   <i className="fas fa-tag mr-1.5"></i>
-                  <span>Device: <span className="font-medium text-gray-700">{deviceInfo.name || "N/A"}</span></span>
+                  <span>
+                    Device:{" "}
+                    <span className="font-medium text-gray-700">
+                      {deviceInfo.name || "N/A"}
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-center text-sm text-gray-500 mr-4">
                   <i className="fas fa-network-wired mr-1.5"></i>
-                  <span>IP: <span className="font-medium text-gray-700">{deviceInfo.IP || "N/A"}</span></span>
+                  <span>
+                    IP:{" "}
+                    <span className="font-medium text-gray-700">
+                      {deviceInfo.IP || "N/A"}
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-center text-sm text-gray-500 mr-4">
                   <i className="fas fa-calendar-alt mr-1.5"></i>
-                  <span>Last Scan: <span className="font-medium text-gray-700">{deviceInfo.lastScan || "N/A"}</span></span>
+                  <span>
+                    Last Scan:{" "}
+                    <span className="font-medium text-gray-700">
+                      {deviceInfo.lastScan || "N/A"}
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-center text-sm text-gray-500">
                   <i className="fas fa-microchip mr-1.5"></i>
-                  <span>OS: <span className="font-medium text-gray-700">{deviceInfo.os || "N/A"}</span></span>
+                  <span>
+                    OS:{" "}
+                    <span className="font-medium text-gray-700">
+                      {deviceInfo.os || "N/A"}
+                    </span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -222,8 +244,12 @@ function ReportPage({
                 <i className="fas fa-bug text-xl"></i>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Total Issues</p>
-                <p className="text-2xl font-bold text-gray-900">{summaryData.issuesCount || 0}</p>
+                <p className="text-sm font-medium text-gray-500">
+                  Total Issues
+                </p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {summaryData.issuesCount || 0}
+                </p>
               </div>
             </div>
             <div className="mt-4 border-t pt-3">
@@ -239,7 +265,9 @@ function ReportPage({
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">CVEs Found</p>
-                <p className="text-2xl font-bold text-gray-900">{summaryData.cvesCount || 0}</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {summaryData.cvesCount || 0}
+                </p>
               </div>
             </div>
             <div className="mt-4 border-t pt-3">
@@ -254,12 +282,18 @@ function ReportPage({
                 <i className="fas fa-fire text-xl"></i>
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">High Severity</p>
-                <p className="text-2xl font-bold text-gray-900">{summaryData.severityBreakdown?.high || 0}</p>
+                <p className="text-sm font-medium text-gray-500">
+                  High Severity
+                </p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {summaryData.severityBreakdown?.high || 0}
+                </p>
               </div>
             </div>
             <div className="mt-4 border-t pt-3">
-              <p className="text-xs text-gray-500">+2 critical since last scan</p>
+              <p className="text-xs text-gray-500">
+                +2 critical since last scan
+              </p>
             </div>
           </div>
 
@@ -271,7 +305,9 @@ function ReportPage({
               </div>
               <div>
                 <p className="text-sm font-medium text-gray-500">Exploitable</p>
-                <p className="text-2xl font-bold text-gray-900">{summaryData.exploitable || "N/A"}</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {summaryData.exploitable || "N/A"}
+                </p>
               </div>
             </div>
             <div className="mt-4 border-t pt-3">
@@ -290,38 +326,64 @@ function ReportPage({
             <div className="space-y-4">
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-purple-600">Critical</span>
-                  <span className="text-sm font-medium text-gray-900">{summaryData.severityBreakdown?.critical || 0}</span>
+                  <span className="text-sm font-medium text-purple-600">
+                    Critical
+                  </span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {summaryData.severityBreakdown?.critical || 0}
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div className="bg-purple-600 h-2.5 rounded-full" style={{width: "15%"}}></div>
+                  <div
+                    className="bg-purple-600 h-2.5 rounded-full"
+                    style={{ width: "15%" }}
+                  ></div>
                 </div>
               </div>
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-sm font-medium text-red-500">High</span>
-                  <span className="text-sm font-medium text-gray-900">{summaryData.severityBreakdown?.high || 0}</span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {summaryData.severityBreakdown?.high || 0}
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div className="bg-red-500 h-2.5 rounded-full" style={{width: "30%"}}></div>
+                  <div
+                    className="bg-red-500 h-2.5 rounded-full"
+                    style={{ width: "30%" }}
+                  ></div>
                 </div>
               </div>
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-yellow-500">Medium</span>
-                  <span className="text-sm font-medium text-gray-900">{summaryData.severityBreakdown?.medium || 0}</span>
+                  <span className="text-sm font-medium text-yellow-500">
+                    Medium
+                  </span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {summaryData.severityBreakdown?.medium || 0}
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div className="bg-yellow-500 h-2.5 rounded-full" style={{width: "40%"}}></div>
+                  <div
+                    className="bg-yellow-500 h-2.5 rounded-full"
+                    style={{ width: "40%" }}
+                  ></div>
                 </div>
               </div>
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-green-500">Low</span>
-                  <span className="text-sm font-medium text-gray-900">{summaryData.severityBreakdown?.low || 0}</span>
+                  <span className="text-sm font-medium text-green-500">
+                    Low
+                  </span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {summaryData.severityBreakdown?.low || 0}
+                  </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5">
-                  <div className="bg-green-500 h-2.5 rounded-full" style={{width: "15%"}}></div>
+                  <div
+                    className="bg-green-500 h-2.5 rounded-full"
+                    style={{ width: "15%" }}
+                  ></div>
                 </div>
               </div>
             </div>
@@ -365,17 +427,25 @@ function ReportPage({
           </h2>
           <div className="space-y-4">
             {remediationData.map((item, index) => (
-              <div key={index} className="p-4 border border-gray-200 rounded-lg">
+              <div
+                key={index}
+                className="p-4 border border-gray-200 rounded-lg"
+              >
                 <div className="flex items-start">
                   <div className="flex-shrink-0 pt-0.5">
                     <i className="fas fa-check-circle text-green-500 text-xl"></i>
                   </div>
                   <div className="ml-3 flex-1">
-                    <h3 className="text-sm font-medium text-gray-900">{item.fix}</h3>
-                    <p className="mt-1 text-sm text-gray-600">{item.description}</p>
+                    <h3 className="text-sm font-medium text-gray-900">
+                      {item.fix}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-600">
+                      {item.description}
+                    </p>
                     <div className="mt-2">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                        <i className="fas fa-clock mr-1"></i> Estimated time: {item.time}
+                        <i className="fas fa-clock mr-1"></i> Estimated time:{" "}
+                        {item.time}
                       </span>
                       {item.note && (
                         <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 ml-1">
@@ -402,7 +472,9 @@ function ReportPage({
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center">
               <i className="fas fa-shield-alt text-indigo-600 text-xl mr-2"></i>
-              <span className="text-lg font-semibold text-gray-900">Security Dashboard</span>
+              <span className="text-lg font-semibold text-gray-900">
+                Security Dashboard
+              </span>
             </div>
             <div className="mt-4 md:mt-0">
               <p className="text-sm text-gray-500">
