@@ -1,5 +1,5 @@
 # Network_config_frontend
-================================
+
 # Security Dashboard
 
 A modern, interactive security vulnerability dashboard built with React, TypeScript, and Express.
