@@ -1,32 +1,127 @@
-# Configuration Assessment Frontend
+# Network_config_frontend
+================================
+# Security Dashboard
 
-This project contains the frontend for the configuration assessment module, built with React, Vite, Tailwind CSS, and Shadcn UI components. The main feature is the `ReportPage` component, which displays device information, a summary of security issues, a findings table with pagination and filters, and remediation recommendations.
+A modern, interactive security vulnerability dashboard built with React, TypeScript, and Express.
 
-## Prerequisites
+## Features
 
-- **Node.js**: Ensure Node.js (version 16 or later) is installed. Download it from [nodejs.org](https://nodejs.org/) if needed.
-- **Git**: Required to clone the repository. Install from [git-scm.com](https://git-scm.com/) if not already installed.
+- 🔍 Interactive pie chart with click-to-filter functionality
+- 📊 Real-time security metrics and severity breakdown
+- 🔎 Advanced search and filtering for security findings
+- 📱 Responsive design optimized for desktop use
+- 📄 Export capabilities (HTML reports and CSV data)
+- ⚡ Auto-refresh functionality (5-minute intervals)
+- 🎨 Modern glassmorphism UI with professional styling
 
-## Setup and Run
+## Quick Start
 
-1. **Clone the Repository**:
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Clone/Download the project**
    ```bash
-   git clone https://github.com/Cyart-project/configuration-assessment-front.git
-   cd configuration-assessment-front
-2. Install Dependencies: npm install (This installs all required packages, including React, Vite, Tailwind CSS, and Shadcn UI components.)
-3. Run The devlopment server: npm run dev (This starts the Vite development server. You’ll see a URL in the terminal (e.g., http://localhost:5173).)
-4. View the App:
-Open your browser and navigate to the URL provided (e.g., http://localhost:5173).
-You should see the ReportPage component with device info, summary, findings table, and remediation sections.
-Project Structure
-src/pages/ReportPage.jsx: The main component displaying the security report.
-src/components/ui/: Contains Shadcn UI components like Card and DataTable.
-public/: Static assets (e.g., images, if any).
-tailwind.config.js: Tailwind CSS configuration for custom styles.
-Notes
-The visual design of ReportPage needs improvement to match the Dashboard.html example. I’ll refine this in the coming week.
-If you encounter issues, ensure all dependencies are installed and Node.js is up to date.
-Troubleshooting
-Error: "Cannot find module": Run npm install again to ensure all dependencies are installed.
-Port Conflict: If http://localhost:5173 is in use, Vite will suggest another port (e.g., http://localhost:5174).
-undefined
+   # If downloading, extract to your desired folder
+   cd security-dashboard
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   ```
+   http://localhost:5000
+   ```
+
+The application will automatically start both the backend API server and frontend development server.
+
+## Project Structure
+
+```
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Page components
+│   │   └── lib/            # Utilities and configuration
+├── server/                 # Express backend
+│   ├── index.ts           # Server entry point
+│   ├── routes.ts          # API routes
+│   └── storage.ts         # Data storage layer
+├── shared/                # Shared TypeScript types
+└── INTEGRATION_GUIDE.md   # Backend integration instructions
+```
+
+## API Integration
+
+The dashboard is designed to work with any backend that provides JSON responses. Current endpoints:
+
+- `GET /api/dashboard/:deviceId` - Device info and security summary
+- `GET /api/findings/:deviceId` - Security findings with optional filtering
+
+See `INTEGRATION_GUIDE.md` for detailed backend integration instructions.
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+## Technology Stack
+
+- **Frontend**: React 18, TypeScript, Vite, TailwindCSS
+- **Backend**: Express.js, TypeScript
+- **UI Components**: Radix UI, shadcn/ui
+- **Charts**: Chart.js with React integration
+- **State Management**: TanStack Query
+- **Database**: Drizzle ORM (configurable for any SQL database)
+
+## Features Overview
+
+### Interactive Pie Chart
+- Click segments to filter security findings
+- Visual severity breakdown with color coding
+- Hover effects and tooltips
+
+### Security Findings Table
+- Search by title, description, or timestamp
+- Filter by severity level (Critical, High, Medium, Low)
+- Clickable CVE links to external databases
+- Estimated fix times and reboot requirements
+
+### Export Functionality
+- **PDF Export**: Downloads formatted HTML report (use browser Print → PDF)
+- **Excel Export**: Downloads CSV file compatible with Excel/Google Sheets
+
+### Auto-Refresh
+- Configurable auto-refresh (currently 5 minutes)
+- Manual refresh capability
+- Real-time data updates
+
+## Production Deployment
+
+For production deployment, see `INTEGRATION_GUIDE.md` for:
+- Database setup and migration
+- Authentication implementation
+- Environment configuration
+- API integration with real security scanners
+
+## Browser Compatibility
+
+- Chrome 90+
+- Firefox 88+
+- Safari 14+
+- Edge 90+
+
+## License
+
+This project is designed for enterprise security monitoring and reporting.
