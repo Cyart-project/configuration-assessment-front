@@ -21,6 +21,37 @@ import NotFound from "@/pages/not-found";
 
 function App() {
   const [reportData, setReportData] = useState(null);
+  const defaultReport = {
+  device_info: {
+    agent_id: "N/A",
+    device_name: "No Device Selected",
+    ip: "0.0.0.0",
+    os: "Unknown",
+    last_seen: "N/A"
+  },
+  os_details: {
+    build: "N/A",
+    display_version: "N/A",
+    major: "N/A",
+    minor: "N/A",
+    name: "N/A",
+    version: "N/A"
+  },
+  summary: {
+    software_analyzed: 0,
+    alerts_found: 0,
+    syscheck_entries: 0,
+    total_cves: 0,
+    severity_breakdown: {
+      Critical: 0,
+      High: 0,
+      Medium: 0,
+      Low: 0
+    }
+  },
+  findings: []
+};
+
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -33,7 +64,7 @@ function App() {
             {reportData ? (
               <SecurityDashboard reportData={reportData} />
             ) : (
-              <div>No report loaded. Please generate a report.</div>
+              <SecurityDashboard reportData={defaultReport} />
             )}
           </Route>
           <Route>
