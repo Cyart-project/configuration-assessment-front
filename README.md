@@ -2,7 +2,9 @@
 
 # Security Dashboard
 
-A modern, interactive security vulnerability dashboard built with React, TypeScript, and Express.
+## Overview
+
+The Security Dashboard provides real-time, interactive visualization of device security and vulnerability data for enterprise environments. Built with React/TypeScript and Express, it enables security teams to quickly assess risk, investigate vulnerabilities, and track remediation progress across their networks.
 
 ## Features
 
@@ -13,6 +15,20 @@ A modern, interactive security vulnerability dashboard built with React, TypeScr
 - 📄 Export capabilities (HTML reports and CSV data)
 - ⚡ Auto-refresh functionality (5-minute intervals)
 - 🎨 Modern glassmorphism UI with professional styling
+
+## Screenshots
+
+The Security Dashboard adapts its interface depending on available data:
+
+**Initial State – All Values Zero (Before Agent Selection)**  
+![Dashboard Initial State](./attached_assets/initial_webpage.png)
+
+**Populated State – After Report Data is Loaded**  
+![Dashboard With Agent Data](./attached_assets/after_entering_agent.png)
+![Dashboard With Agent Data](./attached_assets/security_findings.png)
+
+The dashboard avoids a blank screen by rendering all widgets and metrics (with placeholder zeros/N/A) prior to data load. Once you enter an Agent ID, all components are updated with actual statistics and findings.
+
 
 ## Quick Start
 
